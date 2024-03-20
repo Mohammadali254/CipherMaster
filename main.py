@@ -38,6 +38,16 @@ def decipher(enciphered_word):
             deciphered_word += letter  # Preserve non-alphabetic characters
     return deciphered_word
 
+
+def center_window(window, width, height):
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    x = (screen_width - width) // 2
+    y = (screen_height - height) // 2
+
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
 # Function to handle enciphering and deciphering
 def process_text():
     word = entry.get().strip()
@@ -65,6 +75,13 @@ entry.pack()
 # Create a button to process the text
 process_button = tk.Button(root, text="Process", command=process_text)
 process_button.pack()
+
+# Set window dimensions
+window_width = 600
+window_height = 400
+
+# Center the window
+center_window(root, window_width, window_height)
 
 # Run the main event loop
 root.mainloop()
